@@ -1,0 +1,46 @@
+body{
+  padding: 0;
+  margin-top: -1rem;
+}
+.app{
+  background: rgb(245, 245, 243);
+  height: 100vh;
+}
+a{
+  text-decoration: none;
+}
+.app-name{
+  text-align: center;
+  font-size: 2.1rem;
+  text-transform: capitalize;
+  font-family: Montserrat;
+  color: rgb(32, 32, 128);
+  /* rgb(160, 115, 31); */
+}
+.app-name span{
+  color:rgb(32, 32, 148)
+   /* rgb(177, 118, 9) */
+}
+.app-name-source{
+  text-align: center;
+  margin-top: -2rem;
+  padding-left: 8rem;
+  font-size: .9rem;
+  color: rgb(145, 102, 24)
+}
+img{
+  width: 20rem;
+  height: 15rem;
+}
+
+.api-result{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.media-img{
+  justify-content: space-around;
+}
+.media-desc{
+  display: block;
+}
