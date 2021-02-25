@@ -1,11 +1,9 @@
 body{
   padding: 0;
-  margin-top: -1rem;
+  background: #f5f5f3
 }
-.app{
-  background: rgb(245, 245, 243);
-  height: 100vh;
-}
+
+
 a{
   text-decoration: none;
 }
