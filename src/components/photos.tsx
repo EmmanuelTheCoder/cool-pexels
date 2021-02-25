@@ -15,44 +15,55 @@ interface IResult {
 }
 const [result, setResult ] = useState<IResult[]>([])
 
+const [index, setIndex] = useState<number>(2)
+const [addNewPhoto, setAddNewPhoto] = useState<IResult[]>([])
+
 useEffect(()=>{
   setResult(getContextParam.media)
   
 },[getContextParam.media])
 
-  let index = 2
+  
 
-  const trick = {
-    name: "Emmanuel",
-    number: index
-  }
+  
+const trick = {
+  name: "Emmanuel",
+  number: index
+}
+
+  const test = useCallback(() =>{
+    setIndex(index + 1);
+    //console.log("trick number from test", trick.number)
+    
+    fetch('http://localhost:8000/request', {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(trick)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log("page number", data.page)
+      setAddNewPhoto([...addNewPhoto, data.photos])
+
+    })
+  }, [index])
+  console.log("data from useState", addNewPhoto);
+  
+  addNewPhoto.map((res, i) =>{
+    console.log("res", res)
+   
+  })
  
   const IterateResult = useCallback(()=>{
 
-    if(index <= 8){
-
-      index++
-    }else{
-      index = 8
-    }
+   setIndex(index + 1);
   
-    console.log("trick number", index)
+    console.log("trick number", trick.number)
   },[index])
 
-    // fetch('http://localhost:8000/request', {
-    //   method: 'POST',
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   },
-    //   body: JSON.stringify(trick)
-    // })
-    // .then(res => res.json())
-    // .then(data => {
-    //   console.log("data from the api", data)
-      
-    // })
-
-//}
+  
   
   
   return (
@@ -60,10 +71,12 @@ useEffect(()=>{
 
 
       <button onClick={IterateResult}>context result</button>
+      <button onClick={test} style={{display: index === 10 ? 'none' : 'block'}}>test</button>
 
       <div className="api-result">
 
      { result.map((res, i): JSX.Element =>{
+       console.log("res from result", res)
       return(
         <div key={i} className="media">
           <div className="media-img">
@@ -82,7 +95,29 @@ useEffect(()=>{
     })
   }
       </div>
+      <p style={{textAlign: 'center', fontSize: '2rem'}}>loading new api value</p>
+      
+      <div className="api-result">
 
+      {(typeof addNewPhoto != "undefined") ? (
+        addNewPhoto.map((res, i) =>{
+          return(
+
+          <div key={i} className="media">
+            <div className="media-img">
+            {/* <img src={res.src.} alt="!" /> */}
+           </div>
+
+          <div className="media-desc">
+            <a href={res.photographer_url} target="_blank">Photographer: {res.photographer}</a>
+          </div>
+
+          </div>
+
+          )
+        })
+        ) : ("")}
+    </div>
     </div>
   );
 }

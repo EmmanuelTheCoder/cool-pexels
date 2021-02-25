@@ -31,7 +31,7 @@ const ContextController = ({children}: any) => {
         .then(data => {
             const randomPhotos = data.photos.sort(()=> Math.random() - 0.5)
             setGetPhoto(randomPhotos)
-            console.log("photos from context", randomPhotos)
+    
         })
         .catch(err => console.error(err))
       }
