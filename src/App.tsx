@@ -1,6 +1,3 @@
-import {useCallback, useContext, useEffect, useState} from 'react';
-import {ProductContext} from './context';
-import Photos from './components/photos';
 import loadable from '@loadable/component';
 //import pMinDelay from 'p-min-delay';
 import './App.css';

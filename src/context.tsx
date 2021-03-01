@@ -29,6 +29,7 @@ const ContextController = ({children}: any) => {
         fetch('http://localhost:8000/test')
         .then(res => res.json())
         .then(data => {
+            console.log("photo from context", data.photos)
             const randomPhotos = data.photos.sort(()=> Math.random() - 0.5)
             setGetPhoto(randomPhotos)
     

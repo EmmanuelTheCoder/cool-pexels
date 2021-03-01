@@ -3,6 +3,48 @@ import {ProductContext} from '../context'
 import '../App.css';
 
 
+const tester = [
+  [
+    {
+      name: "Juwon",
+      age: 24,
+    },
+    {
+      name: "Daniel",
+      age: 12,
+    }
+  ],
+  [
+    {
+      name: "Bolade",
+      age: 28,
+    },
+    {
+      name: "Sholarinde",
+      age: 55,
+    }
+  ],
+  [
+    {
+      name: "Precious",
+      age: 22
+    }, 
+    {
+      name: "lagbe",
+      age: 44
+    },
+    {
+      name: "Crux",
+      age: 44
+    },
+    {
+      name: "Ere",
+      age: 99
+    }
+  ]
+]
+
+console.log("tester length", tester.length);
 
 function Photos(){
 
@@ -13,6 +55,12 @@ interface IResult {
   photographer_url: string, 
   src:{original: string}
 }
+
+interface IResultCombined{
+  picture: { photographer: string, photographer_url: string, src:{original:string}}[]
+}
+  
+
 const [result, setResult ] = useState<IResult[]>([])
 
 const [index, setIndex] = useState<number>(2)
@@ -45,16 +93,17 @@ const trick = {
     .then(res => res.json())
     .then(data => {
       console.log("page number", data.page)
-      setAddNewPhoto([...addNewPhoto, data.photos])
+      const shufflePhotos = data.photos.sort(()=> Math.random() * 0.5);
+      setAddNewPhoto([...addNewPhoto, ...shufflePhotos])
 
     })
   }, [index])
   console.log("data from useState", addNewPhoto);
+  addNewPhoto.map(phot => console.log(phot.photographer))
   
-  addNewPhoto.map((res, i) =>{
-    console.log("res", res)
-   
-  })
+ 
+
+  
  
   const IterateResult = useCallback(()=>{
 
@@ -71,12 +120,10 @@ const trick = {
 
 
       <button onClick={IterateResult}>context result</button>
-      <button onClick={test} style={{display: index === 10 ? 'none' : 'block'}}>test</button>
 
       <div className="api-result">
 
      { result.map((res, i): JSX.Element =>{
-       console.log("res from result", res)
       return(
         <div key={i} className="media">
           <div className="media-img">
@@ -97,26 +144,38 @@ const trick = {
       </div>
       <p style={{textAlign: 'center', fontSize: '2rem'}}>loading new api value</p>
       
-      <div className="api-result">
+    <button onClick={test} style={{display: index === 11 ? 'none' : 'block'}}>test</button>
+    <div className="api-result">
 
       {(typeof addNewPhoto != "undefined") ? (
-        addNewPhoto.map((res, i) =>{
-          return(
-
-          <div key={i} className="media">
-            <div className="media-img">
-            {/* <img src={res.src.} alt="!" /> */}
-           </div>
-
-          <div className="media-desc">
-            <a href={res.photographer_url} target="_blank">Photographer: {res.photographer}</a>
-          </div>
-
-          </div>
-
-          )
-        })
-        ) : ("")}
+        (addNewPhoto.length > 1) ?(
+          addNewPhoto.map((res, i) : JSX.Element =>{
+            return(
+  
+            <div key={i} className="media">
+              <div className="media-img">
+              <img src={res.src.original} alt="!" />
+             </div>
+  
+            <div className="media-desc">
+              <a href={res.photographer_url} target="_blank">Photographer: {res.photographer}</a>
+            </div>
+  
+            </div>
+  
+            )
+          })
+        ) : (
+          // addNewPhoto.forEach(picture =>{
+          //   picture.map((pic, ind) =>{
+          //     return(
+          //       <div key={ind}>
+          //          <p>{pic.photographer}</p> 
+          //       </div>
+          //     )
+          //   })
+          // })
+        "")) : ("")}
     </div>
     </div>
   );
