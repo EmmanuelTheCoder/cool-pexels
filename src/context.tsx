@@ -2,10 +2,10 @@ import { createContext, useState, useEffect } from 'react';
 
 
 export interface IState {
-    media: {photographer: string, photographer_url: string, src:{original: string}}[]
+    media: {photographer: string, photographer_url: string, src:{large: string}}[]
 }
 const initialState: IState = {
-   media: [{photographer: '', photographer_url: '', src:{original: ''}}]
+   media: [{photographer: '', photographer_url: '', src:{large: ''}}]
 }
 
 
@@ -16,7 +16,7 @@ const ProductContext = createContext<IState>(initialState)
 interface IGet {
     photographer: string,
     photographer_url: string
-    src: {original: string}
+    src: {large: string}
 }
 
 

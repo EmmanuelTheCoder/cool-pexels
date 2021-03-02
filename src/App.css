@@ -27,18 +27,44 @@ a{
   color: rgb(145, 102, 24)
 }
 img{
-  width: 20rem;
-  height: 15rem;
+  /* width: 20rem;
+  height: 15rem; */
+  width: 100%;
+  height: auto;
+  
 }
 
 .api-result{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .media-img{
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .media-desc{
   display: block;
 }
+
+.more-photos{
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 1rem;
+  transition: 2s all ease-in-out;
+}
+.more-photos button{
+  background: rgb(32, 32, 128);
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  height: auto;
+  width: 6rem;
+  border-radius: 20px 10px;
+  outline: none;
+  animation: move 5s infinite ease;
+  transition: 2s all ease-in-out;
+  font-family: sans-serif;
+  color: white;
+}
+
+
+
