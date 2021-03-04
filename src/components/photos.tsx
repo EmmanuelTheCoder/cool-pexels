@@ -44,7 +44,6 @@ const tester = [
   ]
 ]
 
-console.log("tester length", tester.length);
 
 function Photos(){
 
@@ -74,21 +73,20 @@ useEffect(()=>{
   
 
   
-const trick = {
-  name: "Emmanuel",
+const request = {
+  name: "photo",
   number: index
 }
 
   const test = useCallback(() =>{
     setIndex(index + 1);
-    //console.log("trick number from test", trick.number)
     
-    fetch('http://localhost:8000/request/photoquery', {
+    fetch('http://localhost:8000/request/mediaquery', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(trick)
+      body: JSON.stringify(request)
     })
     .then(res => res.json())
     .then(data => {
@@ -98,18 +96,14 @@ const trick = {
 
     })
   }, [index])
-  console.log("data from useState", addNewPhoto);
-  addNewPhoto.map(phot => console.log(phot.photographer))
   
- 
-
   
  
   const IterateResult = useCallback(()=>{
 
    setIndex(index + 1);
   
-    console.log("trick number", trick.number)
+    console.log("trick number", request.number)
   },[index])
 
   
@@ -117,9 +111,6 @@ const trick = {
   
   return (
     <div className="app">
-
-
-      <button onClick={IterateResult}>context result</button>
 
       <div className="api-result">
 

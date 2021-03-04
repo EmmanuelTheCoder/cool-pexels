@@ -1,16 +1,37 @@
 import loadable from '@loadable/component';
 //import pMinDelay from 'p-min-delay';
-import './App.css';
+import Videos from './components/videos';
+import './App.css';    
+import { useState } from 'react';
 
 const PhotoComponent = loadable(()=> import ('./components/photos'))
 
 function App(){
+
+  const [toggle, setToggle] = useState<boolean>(true)
+  const photoToggle = () =>{
+
+  }
+
+  const videoToggle = () =>{
+    
+  }
   return(
     <div className="app">
        <h1 className="app-name"> <span>cool</span> pexels</h1>
        <p className="app-name-source">...built on <a href="https://pexels.com">pexel.com's API</a></p>
         
-        <PhotoComponent fallback={<div style={{textAlign: 'center'}}>loading...</div>}/>
+        <div className="component-renderer">
+          <h2 onClick={()=> setToggle(true)} style={{textDecoration: toggle ? 'underline' : 'none', textDecorationColor: toggle ? 'blue' : 'none'}}>Photos</h2>
+          <h2 onClick={()=> setToggle(false)} style={{textDecoration: !toggle ? 'underline': 'none', textDecorationColor: !toggle ? 'blue' : 'none'}}>Videos</h2>
+        </div>
+        
+        <div>
+            {toggle ? <PhotoComponent /> : <Videos />}
+        </div>
+
+        
+        <Videos />
     </div>
   )
 }
