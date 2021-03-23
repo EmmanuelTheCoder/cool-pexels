@@ -42,67 +42,71 @@ const Videos = () =>{
 
     return(
         <div>
-            {videoResult.map((video, ind) =>{
-                const firstItem = video.video_files.slice(0,1);
-                return(
-                    // video.video_files.map((res, i) =>{
-                    //     return(
-                    //         <div key={i}>
-                    //             <video width="320" height="240" controls>
-                    //                 <source src={res.link} type={res.file_type} />
-                    //                 Your browser does not support the video tag
-                    //             </video>
-                    //         </div>
-                    //     )
-                    // }
-                    
-                    <div className="video-result" key={ind}>
-                        {
-                            firstItem.map((res, i) =>{
-                                return(
-                                    <div key={i} className="key">
-                                        <video width="320" height="240" controls>
-                                        <source src={res.link} type={res.file_type} />
-                                        {/* <source src="movie.ogg" type="video/ogg"> */}
-                                        Your browser does not support the video tag.
-                                        </video>
-                                    </div>
-                                );
-                            })
-                        }
-                    </div>
-    
-                );
-            })}
-            <div>
-                <h2>adding new video from server</h2>
-
-                {
-                    addNewVideo.map((vid, ind) =>{
-                        const firstVid = vid.video_files.slice(0, 1);
+            <div className="api-result">
+                {videoResult.map((video, ind) =>{
+                    const firstItem = video.video_files.slice(0,1);
+                    return(
+                        // video.video_files.map((res, i) =>{
+                        //     return(
+                        //         <div key={i}>
+                        //             <video width="320" height="240" controls>
+                        //                 <source src={res.link} type={res.file_type} />
+                        //                 Your browser does not support the video tag
+                        //             </video>
+                        //         </div>
+                        //     )
+                        // }
                         
-                        return(
-                            <div key={ind}>
-
-                                {
-                                    firstVid.map((vid, ind) =>{
-                                        return(
-                                            <div key={ind} className="key">
-                                                <video width="320" height="240" controls>
-                                                <source src={vid.link} type={vid.file_type} />
-                                                {/* <source src="movie.ogg" type="video/ogg"> */}
-                                                Your browser does not support the video tag.
-                                                </video>
-                                            </div> 
-                                        )
-                                    })
-                                }
-                            </div>
-                        )
-                    })
-                }
+                        <div className="video-result" key={ind}>
+                            {
+                                firstItem.map((res, i) =>{
+                                    return(
+                                        <div key={i} className="key">
+                                            <video width="320" height="240" controls>
+                                            <source src={res.link} type={res.file_type} />
+                                            {/* <source src="movie.ogg" type="video/ogg"> */}
+                                            Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    );
+                                })
+                            }
+                        </div>
+        
+                    );
+                })}
+                {/* checking if this will stand */}
             </div>
-            <button onClick={fetchMoreVideos} style={{display: number === 11 ? 'none' : 'block'}}>More videos</button>
+                <div className="api-result">
+
+                    {
+                        addNewVideo.map((vid, ind) =>{
+                            const firstVid = vid.video_files.slice(0, 1);
+                            
+                            return(
+                                <div key={ind}>
+
+                                    {
+                                        firstVid.map((vid, ind) =>{
+                                            return(
+                                                <div key={ind} className="key">
+                                                    <video width="320" height="240" controls>
+                                                    <source src={vid.link} type={vid.file_type} />
+                                                    Your browser does not support the video tag.
+                                                    </video>
+                                                </div> 
+                                            )
+                                        })
+                                    }
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                
+                <div className="more-videos">
+                    <button onClick={fetchMoreVideos} style={{display: number === 11 ? 'none' : 'block'}}>More videos</button>
+                </div>
         </div>
     )
 }

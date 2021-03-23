@@ -133,7 +133,6 @@ const request = {
     })
   }
       </div>
-      <p style={{textAlign: 'center', fontSize: '2rem'}}>loading new api value</p>
       
     <div className="api-result">
 

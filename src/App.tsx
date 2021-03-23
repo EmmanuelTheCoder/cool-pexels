@@ -31,7 +31,11 @@ function App(){
         </div>
 
         
-        <Videos />
+        <div className="footer">
+          <footer>
+            <p>Created by loyaltysamuel001@gmail.com</p>
+          </footer>
+        </div>
     </div>
   )
 }
