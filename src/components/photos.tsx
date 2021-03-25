@@ -3,48 +3,6 @@ import {ProductContext} from '../context'
 import '../App.css';
 
 
-const tester = [
-  [
-    {
-      name: "Juwon",
-      age: 24,
-    },
-    {
-      name: "Daniel",
-      age: 12,
-    }
-  ],
-  [
-    {
-      name: "Bolade",
-      age: 28,
-    },
-    {
-      name: "Sholarinde",
-      age: 55,
-    }
-  ],
-  [
-    {
-      name: "Precious",
-      age: 22
-    }, 
-    {
-      name: "lagbe",
-      age: 44
-    },
-    {
-      name: "Crux",
-      age: 44
-    },
-    {
-      name: "Ere",
-      age: 99
-    }
-  ]
-]
-
-
 function Photos(){
 
 const getContextParam = useContext(ProductContext)
@@ -90,22 +48,11 @@ const request = {
     })
     .then(res => res.json())
     .then(data => {
-      console.log("page number", data.page)
       const shufflePhotos = data.photos.sort(()=> Math.random() * 0.5);
       setAddNewPhoto([...addNewPhoto, ...shufflePhotos])
 
     })
   }, [index])
-  
-  
- 
-  const IterateResult = useCallback(()=>{
-
-   setIndex(index + 1);
-  
-    console.log("trick number", request.number)
-  },[index])
-
   
   
   
@@ -166,4 +113,50 @@ const request = {
 }
 
 export default Photos;
+
+
+
+// testing out parameter mapping
+
+// const tester = [
+//   [
+//     {
+//       name: "Juwon",
+//       age: 24,
+//     },
+//     {
+//       name: "Daniel",
+//       age: 12,
+//     }
+//   ],
+//   [
+//     {
+//       name: "Bolade",
+//       age: 28,
+//     },
+//     {
+//       name: "Sholarinde",
+//       age: 55,
+//     }
+//   ],
+//   [
+//     {
+//       name: "Precious",
+//       age: 22
+//     }, 
+//     {
+//       name: "lagbe",
+//       age: 44
+//     },
+//     {
+//       name: "Crux",
+//       age: 44
+//     },
+//     {
+//       name: "Ere",
+//       age: 99
+//     }
+//   ]
+// ]
+
 

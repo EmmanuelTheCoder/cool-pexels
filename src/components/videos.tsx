@@ -27,7 +27,6 @@ const Videos = () =>{
         })
         .then(res => res.json())
         .then(data => {
-            console.log("more videos", data.videos)
             const shuffleVideos = data.videos.sort(()=> Math.random() * 0.5);
             setAddNewVideo([...addNewVideo, ...shuffleVideos])
         
@@ -64,7 +63,6 @@ const Videos = () =>{
                                         <div key={i} className="key">
                                             <video width="320" height="240" controls>
                                             <source src={res.link} type={res.file_type} />
-                                            {/* <source src="movie.ogg" type="video/ogg"> */}
                                             Your browser does not support the video tag.
                                             </video>
                                         </div>
