@@ -1,19 +1,15 @@
 import { createContext, useState, useEffect } from 'react';
 
-
 export interface IContext {
     media: {photographer: string, photographer_url: string, src:{large: string}}[]
-    //video: {link: string, type: string}[]
     video: {video_files: {file_type: string, link: string}[]}[]
 }
 const initialState: IContext = {
    media: [{photographer: '', photographer_url: '', src:{large: ''}}],
-   //video: [{link: '', type: ''}]
    video: [{video_files: [{file_type: '', link: ''}]}]
 }
 
 export interface IVideo {
-    //videos: {url: string, image: string, user:{name: string, url: string}}[],
     video_files: {link: string, file_type: string}[]
   
 }
