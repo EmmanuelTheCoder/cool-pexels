@@ -39,7 +39,7 @@ const request = {
   const test = useCallback(() =>{
     setIndex(index + 1);
     
-    fetch('http://localhost:8000/request/mediaquery', {
+    fetch('https://cool-pexels-server.herokuapp.com/request/mediaquery', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"

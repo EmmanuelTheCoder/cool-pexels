@@ -32,7 +32,7 @@ const ContextController = ({children}: any) => {
     
     
     const handlePhotoApiCall = () =>{
-        fetch('http://localhost:8000/test')
+        fetch('https://cool-pexels-server.herokuapp.com/test')
         .then(res => res.json())
         .then(data => {
             const randomPhotos = data.photos.sort(()=> Math.random() - 0.5)
@@ -42,7 +42,7 @@ const ContextController = ({children}: any) => {
         .catch(err => console.error(err))
       }
       const handleVideoApiCall = () =>{
-          fetch('http://localhost:8000/videos')
+          fetch('https://cool-pexels-server.herokuapp.com/videos')
           .then(res => res.json())
           .then(data =>{
             setGetVideo(data.videos)
