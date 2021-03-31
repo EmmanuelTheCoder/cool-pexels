@@ -31,6 +31,7 @@ function App(){
         </div>
 
         
+        <button onClick={()=> window.scrollTo(0,0)} className="top">top</button>
         <div className="footer">
           <footer>
             <p>Created by loyaltysamuel001@gmail.com</p>
