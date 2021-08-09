@@ -92,9 +92,15 @@ img{
 }
 
 .top{
-  font-size: 1rem;
-  text-transform: capitalize;
+  
+  
+}
+.app button{
   background: rgb(89, 89, 179);
-  color: white;
-  border-radius: 50px;
+  border-radius: 30px;
+  width: max-content;
+}
+
+.top img{
+  width: fit-content;
 }
